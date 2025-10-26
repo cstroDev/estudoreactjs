@@ -1,6 +1,8 @@
 import './index.scss';
-import { useState } from 'react';
+import { use, useState } from 'react';
 import { tratarNumero } from '../../utils/conversao';
+import { calcularTotalIngresso } from '../../services/ingresso';
+import Cabecalho from '../../components/cabecalho';
 
 
 export default function VarEstado() {
@@ -15,6 +17,20 @@ export default function VarEstado() {
     const [num1, setNum1] = useState(0);
     const [num2, setNum2] = useState(0);
     const [res, setRes] = useState(0);
+
+    const [qtdIngresso, setQtdIngresso] = useState(0);
+    const [meioIng, setMeioIng] = useState(0);
+    const [cupom, setCupom] = useState('');
+    const [totalIng, setTotalIng] = useState(0);
+
+    const [novaMeta, setNovaMeta] = useState('');
+    const [listaMetas, setListaMetas] = useState([]);
+    const [editando, setEditando] = useState(-1);
+
+    const [plano, setPlano] = useState('');
+    const [situacao, setSituacao] = useState('');
+    const [cor, setCor] = useState('');
+    const [listaPlanos, setListaPlanos] = useState([]);
 
     function aumentar() {
         if (contador < 10) {
@@ -33,11 +49,95 @@ export default function VarEstado() {
         setRes(soma.toFixed(1));
     }
 
+    function calcularIngresso() {
+        let total = calcularTotalIngresso(qtdIngresso, meioIng, cupom);
+
+        setTotalIng(total)
+    }
+
+    function adicionarMeta() {
+        if (novaMeta != '') {
+
+            if (editando == -1) {
+                setListaMetas([...listaMetas, novaMeta]);
+                setNovaMeta('')
+            } else {
+                listaMetas[editando] = novaMeta;
+                setListaMetas([...listaMetas]);
+                setNovaMeta('');
+                setEditando(-1);
+            }
+
+        }
+    }
+
+    function teclaApertada(e) {
+        if (e.key == 'Enter') {
+            adicionarMeta();
+        }
+    }
+
+    function removerMeta(pos) {
+        listaMetas.splice(pos, 1);
+        setListaMetas([...listaMetas]);
+    }
+
+    function alterarNovaMeta(pos) {
+        setNovaMeta(listaMetas[pos]);
+        setEditando(pos);
+    }
+
+    function adicionarPlano() {
+        let novoPlano = {
+            titulo: plano,
+            tempo: situacao,
+            tema: cor
+        }
+
+        setListaPlanos([...listaPlanos, novoPlano]);
+        setPlano('');
+        setSituacao('');
+        setCor('');
+    }
+
     return (
         <div className='pagina-varestado pagina'>
-            <header className='cabecalho'>
-                <h1>ReactJS | Variável de Estado</h1>
-            </header>
+            <Cabecalho titulo="ReactJS | Variável de Estado" />
+            <div className='secao planos'>
+                <h1>Meus Planos atuais</h1>
+                <div className='entrada'>
+                    <input type="text" placeholder='Meu plano aqui' value={plano} onChange={e => setPlano(e.target.value)} />
+                    <input type="text" placeholder='Situação do plano aqui' value={situacao} onChange={e => setSituacao(e.target.value)} />
+                    <input type="text" placeholder='Cor de identificação' value={cor} onChange={e => setCor(e.target.value)} />
+                    <button onClick={adicionarPlano}>Adicionar Plano</button>
+                </div>
+                <div className='lista'>
+                    {listaPlanos.map((item, pos) =>
+                        <div className='plano' key={pos}>
+                            <div className='cor' style={{ backgroundColor: item.tema }}>&nbsp;</div>
+                            <div>
+                                <h1>{item.titulo}</h1>
+                                <h2>{item.tempo}</h2>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            </div>
+            <div className='secao metas'>
+                <h1>Metas para os próximos 5 anos</h1>
+                <div className='entrada'>
+                    <input type="text" placeholder='Digite sua meta aqui' onKeyUp={teclaApertada} value={novaMeta} onChange={e => setNovaMeta(e.target.value)} />
+                    <button onClick={adicionarMeta}>Adicionar</button>
+                </div>
+
+                <ul>
+                    {listaMetas.map((item, pos) =>
+                        <li key={pos}>
+
+                        </li>
+                    )}
+                </ul>
+            </div>
             <div className='secao calculadora'>
                 <h1>Calculadora</h1>
                 <div className='entrada'>
@@ -48,6 +148,35 @@ export default function VarEstado() {
                 </div>
                 <button onClick={somar}>Somar</button>
             </div>
+            <div className='secao ingresso'>
+                <h1>Venda de ingresso</h1>
+                <div className='entrada'>
+                    <div>
+                        <label>Quantidade</label>
+                        <input type='text' value={qtdIngresso} onChange={e => setQtdIngresso(e.target.value)} />
+                    </div>
+                    <div>
+                        <label>Meia entrada</label>
+                        <input type='checkbox' checked={meioIng} onChange={e => setMeioIng(e.target.checked)} />
+                    </div>
+                    <div>
+                        <label>Cupom</label>
+                        <input type='text' value={cupom} onChange={e => setCupom(e.target.value)} />
+                    </div>
+                    <div>
+                        <label>&nbsp;</label>
+                        <button onClick={calcularIngresso}>Calcular</button>
+                    </div>
+                    <hr />
+                    <div>
+                        O total é R$ {totalIng}
+                    </div>
+                </div>
+            </div>
+            <div className='secao'>
+                <h1>{tituloS2}</h1>
+                <input type="text" value={tituloS2} onChange={e => setTituloS2(e.target.value)} />
+            </div>
             <div className='secao'>
                 <h1>Contador</h1>
                 <div className='cont'>
@@ -55,10 +184,6 @@ export default function VarEstado() {
                     {contador}
                     <button onClick={diminuir}>-</button>
                 </div>
-            </div>
-            <div className='secao'>
-                <h1>{tituloS2}</h1>
-                <input type="text" value={tituloS2} onChange={e => setTituloS2(e.target.value)} />
             </div>
             <div className='secao'>
                 <h1>{tituloS3}</h1>

@@ -1,4 +1,5 @@
 import './index.scss';
+import Cabecalho from '../../components/cabecalho';
 
 export default function Eventos() {
 
@@ -23,9 +24,7 @@ export default function Eventos() {
 
     return (
         <div className='pagina-eventos pagina'>
-            <header className='cabecalho'>
-                <h1>ReactJs | Eventos </h1>
-            </header>
+            <Cabecalho titulo="ReactJS | Eventos"/>
             <section className='secao'>
                 <h1>Entendendo eventos</h1>
                 <p onMouseMove={movimentouMouse}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, quia iusto quos modi aspernatur iure itaque consequatur voluptates adipisci rerum harum rem beatae molestiae quibusdam quisquam repellendus animi officiis necessitatibus!</p>
