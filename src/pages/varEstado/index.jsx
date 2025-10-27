@@ -133,7 +133,9 @@ export default function VarEstado() {
                 <ul>
                     {listaMetas.map((item, pos) =>
                         <li key={pos}>
-
+                            <i class="fa-solid fa-pen-to-square" onClick={() => alterarNovaMeta(pos)}></i> &nbsp;
+                            <i class="fa-solid fa-trash" onClick={() => removerMeta(pos)}></i> &nbsp;
+                            {item}
                         </li>
                     )}
                 </ul>
