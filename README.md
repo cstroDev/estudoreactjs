@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+# Estudo ReactJS - Aprimoramento de Conceitos
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este projeto foi desenvolvido com o objetivo de estudar, praticar e aprimorar os conhecimentos fundamentais do ReactJS. O foco principal é o entendimento do ciclo de vida dos componentes, gerenciamento de estado e interação com o usuário.
 
-## Available Scripts
+## 🚀 Tecnologias Utilizadas
 
-In the project directory, you can run:
+- [React](https://reactjs.org/)
+- [Create React App](https://github.com/facebook/create-react-app)
+- JavaScript (ES6+)
+- SCSS (Sass)
+
+## 📋 Funcionalidades e Conceitos Praticados
+
+O projeto (especificamente a página de Variáveis de Estado) serve como um laboratório para os seguintes conceitos:
+
+### 1. Gerenciamento de Estado (`useState`)
+- Utilização do Hook `useState` para armazenar e atualizar dados dinâmicos.
+- Manipulação de diferentes tipos de dados no estado: `strings`, `numbers`, `booleans` e `arrays`.
+
+### 2. Manipulação de Eventos
+- Captura de eventos de clique (`onClick`) para disparar ações.
+- Captura de mudanças em inputs (`onChange`) para criar componentes controlados (Controlled Components).
+- Captura de eventos de teclado (`onKeyUp`) para funcionalidades como "pressionar Enter para adicionar".
+
+### 3. Renderização de Listas e Arrays
+- Uso da função `.map()` para renderizar listas dinâmicas de componentes.
+- Manipulação de arrays no estado para adicionar, remover e editar itens (CRUD em memória).
+- Uso correto da prop `key` para otimização da renderização.
+
+### 4. Renderização Condicional
+- Exibição de textos ou elementos baseados em valores booleanos do estado (ex: Operador ternário).
+
+### 5. Lógica de Negócio e Cálculos
+- Implementação de funções para realizar cálculos em tempo real baseados no input do usuário (ex: Calculadora, Venda de Ingressos).
+- Formatação de números e validações simples.
+
+## 🛠️ Como Executar o Projeto
+
+No diretório do projeto, você pode rodar os seguintes comandos:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Roda o aplicativo no modo de desenvolvimento.\
+Abra http://localhost:3000 para visualizar no navegador.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+A página irá recarregar automaticamente se você fizer edições no código.
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Constrói o aplicativo para produção na pasta `build`.\
+Isso otimiza o React para a melhor performance possível.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 📚 Estrutura de Exemplos
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+O projeto conta com seções práticas como:
+- **Planos Atuais**: Adição de objetos complexos em listas.
+- **Metas**: Lista de tarefas com funcionalidades de adicionar, editar e remover.
+- **Calculadora**: Operações matemáticas simples com estado.
+- **Venda de Ingressos**: Cálculo de totais com condicionais (meia-entrada, cupom).
+- **Contador**: Exemplo clássico de incremento e decremento de estado.
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Desenvolvido para fins de estudo.
